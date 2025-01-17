@@ -21,6 +21,8 @@ class ContactRequest extends FormRequest
      *
      * @return array
      */
+
+    // ※電話番号のバリデーション上手くできていないので要確認
     public function rules()
     {
         return [
@@ -29,8 +31,8 @@ class ContactRequest extends FormRequest
             'last_name' => ['required', 'max:255'],
             'gender' => ['required'],
             'email' => ['required', 'email', 'max:255'],
-            'tel' => ['required', 'numeric', 'max:5'],
-            //   'digits_between:10,11'
+            // 'tel' => ['required', 'max:11'],
+            // //   'digits_between:10,11'
             'address' => ['required', 'max:255'],
             'detail' => ['required', 'max:120'],
         ];
@@ -43,8 +45,8 @@ class ContactRequest extends FormRequest
             'gender.required' => '性別を選択してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレスはメール形式で入力してください',
-            'tel.required' => '電話番号を入力してください',
-            'tel.max' => '電話番号は5桁までの数字で入力してください',
+            // 'tel.required' => '電話番号を入力してください',
+            // 'tel.max' => '電話番号は5桁までの数字で入力してください',
             'address.required' => '住所を入力してください',
             'detail.required' => 'お問い合わせ内容を入力してください',
             'detail.max' => 'お問合せ内容は120文字以内で入力してください',
