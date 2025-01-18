@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
 </head>
 
 <body>
@@ -100,6 +100,7 @@
                     <td class="contact-table__item">
                         <div class="contact__item">
                             <p class="contact-form__item-p">{{ $contact['first_name'] }}</p>
+                            <p class="contact-form__item-p">{{ $contact['last_name'] }}</p>
                         </div>
                     </td>
                     <!-- 性別の表示 -->
@@ -124,7 +125,72 @@
                     <td>
                         <form action="">
                         <div class="detail-form__button">
-                            <button class="detail-form__button-submit" type="submit">詳細</button>
+                            <a href="#modal" class="modal-open-button">詳細</a>
+                                <div class="modal" id="modal">
+                                <div class="modal-wrapper">
+                                    <a href="#" class="close">&times;</a>
+                                    <div class="modal-content">
+                                        <div class="confirm-table">
+                                        <table class="confirm-table__inner">
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">お名前</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['first_name'] }}</p>
+                                                <p class="contact-form__item-p">{{ $contact['last_name'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">性別</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['gender'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">メールアドレス</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['email'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">電話番号</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['tel'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">住所</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['address'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">建物名</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['building'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">お問い合わせ内容の種類</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['category_id'] }}</p>
+                                            </td>
+                                            </tr>
+                                            <tr class="confirm-table__row">
+                                            <th class="confirm-table__header">お問い合わせ内容</th>
+                                            <td class="confirm-table__text">
+                                                <p class="contact-form__item-p">{{ $contact['detail'] }}</p>
+                                            </td>
+                                            </tr>
+                                        </table>
+                                        </div>
+                                        <div class="form__button">
+                                        <button class="form__button-submit" type="submit">削除</button>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                </div>
                         </div>
                         </form>
                     </td>
