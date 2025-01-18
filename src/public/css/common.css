@@ -1,0 +1,26 @@
+* {
+    font-family: "Sansita", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+body {
+    background-color: #F2ECE7;
+}
+
+.header__inner {
+    margin: 0 auto;
+    max-width: 1230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.header__logo {
+    color: #887C6E;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    background-color: #fff;
+}
+

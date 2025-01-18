@@ -1,36 +1,27 @@
 <!-- ユーザー登録画面 -->
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Form</title>
-    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
-    </head>
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+@endsection
 
-    <body>
-    <header class="header">
-        <div class="header__inner">
-        <h1>FashionablyLate</h1>
-        <div class="header__button">
-            <a href="/login">login</a>
-        </div>
+@section('nav')
+    <div class="header__button">
+        <a href="/login">login</a>
+    </div>
+@endsection
 
-        </div>
-    </header>
+@section('content')
 
-    <main>
-        <div class="contact-form__content">
-        <div class="contact-form__heading">
-            <h2>Register</h2>
-        </div>
-        <form class="form" action="/register" method="post">
-            @csrf
-            <!-- お名前フォーム -->
-            <div class="form__group">
+<div class="contact-form__content">
+    <div class="contact-form__heading">
+        <h2>Register</h2>
+    </div>
+    <div class="contact-form__input">
+    <form class="form" action="/register" method="post">
+        @csrf
+        <!-- お名前フォーム -->
+        <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">お名前</span>
             </div>
@@ -44,9 +35,9 @@
                     @enderror
                 </div>
             </div>
-            </div>
-            <!-- メールアドレスのフォーム -->
-            <div class="form__group">
+        </div>
+        <!-- メールアドレスのフォーム -->
+        <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">メールアドレス</span>
             </div>
@@ -60,9 +51,9 @@
                     @enderror
                 </div>
             </div>
-            </div>
-            <!-- パスワードのフォーム -->
-            <div class="form__group">
+        </div>
+        <!-- パスワードのフォーム -->
+        <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">パスワード</span>
             </div>
@@ -76,17 +67,13 @@
                     @enderror
                 </div>
             </div>
-            </div>
-
-
-
-            <!-- 登録ボタンをクリックするとログイン画面に遷移 -->
-            <div class="form__button">
-            <button class="form__button-submit" type="submit">登録</button>
-            </div>
-        </form>
         </div>
-    </main>
-</body>
+        <!-- 登録ボタンをクリックするとログイン画面に遷移 -->
+        <div class="form__button">
+            <button class="form__button-submit" type="submit">登録</button>
+        </div>
+    </form>
+    </div>
+</div>
 
-</html>
+@endsection

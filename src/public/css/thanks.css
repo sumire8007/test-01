@@ -1,0 +1,45 @@
+* {
+    font-family: "Sansita", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.thanks__content {
+    margin: 0 auto;
+}
+
+.thanks__background {
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+
+.thanks__message {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+h1 {
+    font-size: 150px;
+    color: #f8f8f8;
+}
+
+.thanks__heading {
+    color: #887C6E;
+}
+
+.thanks__button-submit {
+    text-align: center;
+}
+
+.thanks__button-submit a {
+    background-color: #7f7669;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    margin-top: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
