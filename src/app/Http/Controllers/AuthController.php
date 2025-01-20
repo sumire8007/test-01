@@ -6,12 +6,14 @@ use App\Models\Category;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
+
 class AuthController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::with('category')->get();
+        $contacts = Contact::with('category')->Paginate(7);
         $categories = Category::all();
+        // $pages = Contact::Paginate(7);
         return view('admin',compact('contacts','categories'));
 
     }

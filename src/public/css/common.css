@@ -1,8 +1,9 @@
 * {
-    font-family: "Sansita", serif;
-    font-weight: 400;
+    font-family: skolar-latin, serif;
     font-style: normal;
+    font-weight: 300;
 }
+
 body {
     background-color: #F2ECE7;
 }

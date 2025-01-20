@@ -1,6 +1,99 @@
+body {
+    background-color: #fff;
+    color: #887C6E;
+}
 
+.header__inner {
+    margin: 0 auto;
+    max-width: 1230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
 
+.header__logo {
+    color: #887C6E;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    background-color: #fff;
+}
 
+.header__button button {
+    background-color: #F4F7F4;
+    color: #DAD3CF;
+    border: 1px solid #DAD3CF;
+    text-align: right;
+    padding: 5px 10px;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+.admin-form__heading {
+    text-align: center;
+    color: #887C6E;
+}
+
+.admin-form__content {
+    max-width: 1230px;
+}
+
+/* 検索フォーム */
+.search-form {
+    max-width: 1230px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+.search-form__item {
+    margin: 0 10px 0;
+}
+.search-form__item-input {
+    width: 280px;
+}
+.search-form__item-select {
+    margin: 0 10px 0;
+    width: 150px;
+}
+
+.search-form__button-submit {
+    margin: 0 10px 0;
+    background-color: #7f7669;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.search-form__button-submit--reset{
+    background-color: #d9c5b5;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.export {
+    display: inline;
+}
+
+/* テーブルCSS */
+.admin-table__inner {
+    margin: 0 auto;
+    text-align: center;
+}
+.admin-table tr {
+    text-align: center;
+    border:1px solid #7f7669;
+}
+
+.admin-table__row-title {
+    background-color: #7f7669;
+    color: #fff;
+    height: 50px;
+    text-align: left;
+}
 
 
 
@@ -8,11 +101,10 @@
 /* モーダルウィンドウCSS */
 .modal-open-button {
     padding: 10px 20px;
-    color: white;
+    color: #887C6E;
     text-decoration: none;
     cursor: pointer;
-    background-color: #007BFF;
-    border: none;
+    border: 1px solid #887C6E;
     border-radius: 5px;
 }
 

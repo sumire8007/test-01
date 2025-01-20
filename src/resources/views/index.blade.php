@@ -5,11 +5,13 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 @endsection
 
-    @section('content')
-        <div class="contact-form__content">
-        <div class="contact-form__heading">
-            <h2>Contact</h2>
-        </div>
+@section('content')
+<div class="contact-form__content">
+    <div class="contact-form__heading">
+        <h2>Contact</h2>
+    </div>
+
+    <div class="form__box">
         <form class="form" action="/confirm" method="post">
             @csrf
             <!-- お名前フォーム -->
@@ -41,9 +43,9 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <label><input type="radio" name="gender" value="男性" checked>男性</label>
-                    <label><input type="radio" name="gender" value="女性">女性</label>
-                    <label><input type="radio" name="gender" value="その他">その他</label>
+                    <label><input class="accented" type="radio" name="gender" value="男性" checked>男性</label>
+                    <label><input class="accented" type="radio" name="gender" value="女性">女性</label>
+                    <label><input class="accented" type="radio" name="gender" value="その他">その他</label>
                 </div>
                 <div class="form__error">
                     @error('gender')
@@ -143,20 +145,20 @@
             </div>
             <!-- お問い合わせ内容フォーム -->
             <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">お問い合わせ内容</span>
-                <span class="form__label--required">※</span>
-            </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                    <textarea name="detail" cols="120" rows="3" value="{{ old('detail') }}"></textarea>
+                <div class="form__group-title">
+                    <span class="form__label--item">お問い合わせ内容</span>
+                    <span class="form__label--required">※</span>
                 </div>
-                <div class="form__error">
-                    @error('detail')
-                    {{ $message }}
-                    @enderror
+                <div class="form__group-content">
+                    <div class="form__input--text">
+                        <textarea name="detail" cols="120" rows="3" value="{{ old('detail') }}"></textarea>
+                    </div>
+                    <div class="form__error">
+                        @error('detail')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-            </div>
             </div>
 
             <!-- 確認ボタンをクリックすると確認画面に遷移 -->
@@ -164,5 +166,6 @@
             <button class="form__button-submit" type="submit">確認画面</button>
             </div>
         </form>
-        </div>
-    @endsection
+    </div>
+</div>
+@endsection

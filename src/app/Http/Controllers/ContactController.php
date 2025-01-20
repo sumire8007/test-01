@@ -10,6 +10,7 @@ use App\Models\Category;
 
 class ContactController extends Controller
 {
+    // 問い合わせ画面の表示
     public function index(){
         $contacts = Contact::with('category')->get();
         $categories = Category::all();
@@ -22,10 +23,38 @@ class ContactController extends Controller
         $contact = $request->only(['first_name', 'last_name', 'category_id','gender', 'email', 'address', 'building', 'detail']);
         return view('confirm',compact('contact','tel'));
     }
-    // データの追加
+    // 問い合わせデータの追加
     public function store(ContactRequest $request){
         $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
         Contact::create($contact);
         return view('thanks');
+    }
+    // 問い合わせ内容の削除
+    public function destroy(Request $request){
+        Contact::find($request->id)->delete();
+        return redirect('/admin');
+    }
+
+    //検索 ※全て入れるとidとcreated_atの値だけが渡された
+    public function search(Request $request){
+        // $contacts = Contact::with('category')
+        // ->CategorySearch($request->category_id)
+        // ->KeywordSearch($request->keyword)
+        // ->GenderSearch($request->gender)
+        // ->CreatedSearch($request->created_at)
+        // ->paginate(7);
+        // $categories = Category::all();
+        $contacts = Contact::with('category')
+        ->GenderSearch($request->gender)->Paginate(7);
+        $categories = Category::all();
+
+        return view('admin', compact('contacts','categories'));
+    }
+
+    // リセット
+    public function reset(){
+        $contacts = Contact::with('category')->get();
+        $categories = Category::all();
+        return view('admin',compact('contacts','categories'));
     }
 }

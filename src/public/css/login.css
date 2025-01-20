@@ -65,3 +65,7 @@ button {
     display: block;
     margin: auto;
 }
+
+.form__error {
+    color: #887C6E;
+}

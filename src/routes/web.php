@@ -22,8 +22,12 @@ use App\Http\Controllers\AuthController;
 Route::get('/',[ContactController::class,'index']);
 Route::post('/confirm',[ContactController::class,'confirm']);
 Route::post('/thanks',[ContactController::class,'store']);
+Route::post('/delete',[ContactController::class,'destroy']);
+Route::get('/contacts/search',[ContactController::class,'search']);
+Route::get('/admin',[ContactController::class,'reset']);
 
 Route::get('/admin',[AuthController::class,'index']);
+
 
 // // ログアウト時にログイン画面にリダイレクト
 // Route::post('logout',[AuthController::class,'destroy']);
