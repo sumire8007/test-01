@@ -66,6 +66,7 @@ body {
     border: none;
     padding: 5px 15px;
     cursor: pointer;
+    display: inline;
 }
 .search-form__button-submit--reset{
     background-color: #d9c5b5;
@@ -73,6 +74,7 @@ body {
     border: none;
     padding: 5px 15px;
     cursor: pointer;
+    display: inline-block;
 }
 .export {
     display: inline;
@@ -84,7 +86,7 @@ body {
     text-align: center;
 }
 .admin-table tr {
-    text-align: center;
+    text-align: left;
     border:1px solid #7f7669;
 }
 
@@ -92,9 +94,7 @@ body {
     background-color: #7f7669;
     color: #fff;
     height: 50px;
-    text-align: left;
 }
-
 
 
 

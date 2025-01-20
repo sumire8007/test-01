@@ -31,10 +31,10 @@
         <!-- 性別で検索 -->
         <select class="search-form__item-select" name="gender">
                 <option>性別</option>
-                <option value="{{old}}">全て</option>
-                <option value="{{$contacts['gender']}}">男性</option>
-                <option value="{{$contacts['gender']}}">女性</option>
-                <option value="{{$contacts['gender']}}">その他</option>
+                <option value="">全て</option>
+                <option value="男性">男性</option>
+                <option value="女性">女性</option>
+                <option value="その他">その他</option>
         </select>
 
         <!-- お問い合わせの種類で検索 -->
@@ -54,13 +54,12 @@
         <div class="search-form__button">
             <button class="search-form__button-submit" type="submit">検索</button>
         </div>
+    </form>
         <!-- リセットボタン -->
-        <form action="/admin" method="get">
-        @csrf
+    <form class="" action="/admin" method="get">
         <div class="search-form__button">
-            <button class="search-form__button-submit--reset" type="submit">リセット</button>
+            <button class="search-form__button-submit--reset">リセット</button>
         </div>
-        </form>
     </form>
     <!-- エクスポート -->
     <div class="export">
@@ -106,7 +105,8 @@
                 <!-- お問い合わせ種類の表示 -->
                 <td class="admin-table__item">
                     <div class="admin__item">
-                        <p class="admin-form__item-p">{{ $contact['category_id'] }}</p>
+                        <p class="admin-form__item-p" value="{{ $contact['category_id'] }}">{{$contact['category']['content']}}
+                        </p>
                     </div>
                 </td>
                 <!-- 詳細のボタン、モーダルウィンドウで詳細表示 -->
@@ -167,7 +167,7 @@
                                     <tr class="confirm-table__row">
                                         <th class="confirm-table__header">お問い合わせの種類</th>
                                         <td class="confirm-table__text">
-                                            <p class="contact-form__item-p">{{ $contact['category_id'] }}</p>
+                                            <p class="contact-form__item-p">{{$contact['category']['content']}}</p>
                                         </td>
                                     </tr>
                                     <!-- お問い合わせ内容 -->

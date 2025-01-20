@@ -13,7 +13,6 @@ class AuthController extends Controller
     {
         $contacts = Contact::with('category')->Paginate(7);
         $categories = Category::all();
-        // $pages = Contact::Paginate(7);
         return view('admin',compact('contacts','categories'));
 
     }

@@ -24,7 +24,6 @@ Route::post('/confirm',[ContactController::class,'confirm']);
 Route::post('/thanks',[ContactController::class,'store']);
 Route::post('/delete',[ContactController::class,'destroy']);
 Route::get('/contacts/search',[ContactController::class,'search']);
-Route::get('/admin',[ContactController::class,'reset']);
 
 Route::get('/admin',[AuthController::class,'index']);
 
