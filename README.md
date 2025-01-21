@@ -41,20 +41,32 @@
 1. php artisan migrate
 
 **シーダデータの作成**
-1. シーディングは下記に変更　（ファイル：src/database/seeders/DatabaseSeeder.php）
+1. シーディングは下記ファイルのrunメソッドを変更
+
+   ファイル：src/database/seeders/DatabaseSeeder.php）
+   
    runメソッド内　：　$this->call(CategoriesTableSeeder::class);
+   
 2. php artisan db:seed
 
 **ファクトリによるデータ作成**
+1. ファクトリは下記ファイルのrunメソッドを変更
+
+   ファイル：src/database/seeders/DatabaseSeeder.php
+   
+   runメソッド内　：　$this->call(ContactTableSeeder::class);
+   
+2. php artisan db:seed
 
 
    
 ## 使用技術
 • PHP 8.2.8
 
-• Laravel 10.0
+• Laravel 8.83.8
 
-• MySQL 8.0
+• MySQL 8.0.26
+
 
 ## URL
 
