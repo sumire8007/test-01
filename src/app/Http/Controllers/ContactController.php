@@ -43,7 +43,6 @@ class ContactController extends Controller
     public function search(Request $request)
     {
         $query = Contact::with('category');
-
         if($request->filled('keyword')){
             $query->KeywordSearch($request->keyword);
         }
@@ -58,6 +57,7 @@ class ContactController extends Controller
         elseif($request->filled('created_at')){
             $query->CreatedSearch($request->created_at);
         }
+
         $contacts = $query->paginate(7);
         $categories = Category::all();
 
@@ -65,9 +65,3 @@ class ContactController extends Controller
     }
 
 }
-        // $contacts = Contact::with('category')
-        // ->CategorySearch($request->category_id)
-        // ->KeywordSearch($request->keyword)
-        // ->GenderSearch($request->gender)
-        // ->CreatedSearch($request->created_at)
-        // ->paginate(7);

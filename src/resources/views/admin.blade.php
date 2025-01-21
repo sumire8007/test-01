@@ -67,7 +67,7 @@
     </div>
     <!-- ページネーション -->
     <div>
-    {{ $contacts->links('vendor.pagination.default-copy') }}
+    {{ $contacts->links('.default-copy') }}
     </div>
     <!-- 問い合わせ内容のリスト表示 -->
     <div class="admin-table">
