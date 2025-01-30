@@ -33,7 +33,7 @@ class Contact extends Model
             }
     }
 
-        //検索(性別gender)
+    //検索(性別gender)
     public function scopeGenderSearch($query, $gender)
     {
         if(!empty($gender)) {

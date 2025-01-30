@@ -43,9 +43,16 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <label><input class="accented" type="radio" name="gender" value="男性" checked>男性</label>
-                    <label><input class="accented" type="radio" name="gender" value="女性">女性</label>
-                    <label><input class="accented" type="radio" name="gender" value="その他">その他</label>
+                    <label>
+                        <input class="accented" type="radio" name="gender" value="1" id="male" {{old('gender') ==1 || old('gender')==null ? 'checked' : '' }} checked>男性
+                    </label>
+                    <label>
+                        <input class="accented" type="radio" name="gender" value="2" id="female" {{old('gender')==2 ? 'checked' : '' }}>女性
+                    </label>
+                    <label>
+                        <input class="accented" type="radio" name="gender" value="3"
+                    id="male" {{old('gender')==3 ? 'checked' : '' }}>その他
+                </label>
                 </div>
                 <div class="form__error">
                     @error('gender')
@@ -84,9 +91,18 @@
                 <input type="tel" name="tel3" placeholder="5678" value="{{ old('tel3') }}"/>
                 </div>
                 <div class="form__error">
-                    @error('tel')
+                    @error('tel1')
                     {{ $message }}
                     @enderror
+
+                    @error('tel2')
+                    {{ $message }}
+                    @enderror
+
+                    @error('tel3')
+                    {{ $message }}
+                    @enderror
+
                 </div>
             </div>
             </div>

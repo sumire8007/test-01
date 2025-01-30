@@ -26,5 +26,6 @@ Route::delete('/delete',[ContactController::class,'destroy']);
 Route::get('/contacts/search',[ContactController::class,'search']);
 
 Route::get('/admin',[AuthController::class,'index']);
+Route::post('/export', [ContactController::class, 'export']);
 
 

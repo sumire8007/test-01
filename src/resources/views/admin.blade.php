@@ -7,10 +7,12 @@
 
 @section('nav')
     <div class="header__button">
+        @if(Auth::check())
         <form class="form" action="/logout" method="post">
         @csrf
         <button class="header__button">logout</button>
         </form>
+        @endif
     </div>
 @endsection
 
@@ -30,11 +32,10 @@
 
         <!-- 性別で検索 -->
         <select class="search-form__item-select" name="gender">
-                <option>性別</option>
-                <option value="">全て</option>
-                <option value="男性">男性</option>
-                <option value="女性">女性</option>
-                <option value="その他">その他</option>
+                <option disabled selected>性別</option>
+                <option value="1" @if( request('gender') ==1 ) selected @endif>男性</option>
+                <option value="2" @if( request('gender') ==2 ) selected @endif>女性</option>
+                <option value="3" @if( request('gender')==3 ) selected @endif>その他</option>
         </select>
 
         <!-- お問い合わせの種類で検索 -->
@@ -63,7 +64,11 @@
     </form>
     <!-- エクスポート -->
     <div class="export">
-        <button>エクスポート</button>
+        <form action="{{'/export?'.http_build_query(request()->query())}}" method="post">
+        @csrf
+        <input class="export__btn btn" type="submit" value="エクスポート">
+        </form>
+        {{ $contacts->appends(request()->query())->links('.default-copy') }}
     </div>
     <!-- ページネーション -->
     <div>
@@ -73,12 +78,10 @@
     <div class="admin-table">
         <table class="admin-table__inner">
             <tr class="admin-table__row-title">
-                <th>
-                    <td><span class="contact-table__header-span">お名前</span></td>
-                    <td><span class="contact-table__header-span">性別</span></td>
-                    <td><span class="contact-table__header-span">メールアドレス</span></td>
-                    <td><span class="contact-table__header-span">お問い合わせの種類</span></td>
-                </th>
+                    <th><span class="contact-table__header-span">お名前</span></th>
+                    <th><span class="contact-table__header-span">性別</span></th>
+                    <th><span class="contact-table__header-span">メールアドレス</span></th>
+                    <th><span class="contact-table__header-span">お問い合わせの種類</span></th>
             </tr>
             <!-- contactテーブルリストの表示 & 詳細でモーダルウィンドウを入れる -->
             @foreach ($contacts as $contact)
@@ -93,7 +96,15 @@
                 <!-- 性別の表示 -->
                 <td class="admin-table__item">
                     <div class="admin__item">
-                        <p class="admin-form__item-p">{{ $contact['gender'] }}</p>
+                        <p class="admin-form__item-p">
+                            @if($contact->gender == 1)
+                            男性
+                            @elseif($contact->gender == 2)
+                            女性
+                            @else
+                            その他
+                            @endif
+                        </p>
                     </div>
                 </td>
                 <!-- メールアドレスの表示 -->
@@ -111,7 +122,9 @@
                 </td>
                 <!-- 詳細のボタン、モーダルウィンドウで詳細表示 -->
                 <td>
-                <form action="">
+                <form class="delete-form" action="/delete" method="post">
+                @csrf
+                @method('DELETE')
                 <div class="detail-form__button">
                     <a href="#modal" class="modal-open-button">詳細</a>
                         <div class="modal" id="modal">
@@ -132,7 +145,15 @@
                                     <tr class="confirm-table__row">
                                         <th class="confirm-table__header">性別</th>
                                         <td class="confirm-table__text">
-                                            <p class="contact-form__item-p">{{ $contact['gender'] }}</p>
+                                            <p class="contact-form__item-p">
+                                            @if($contact->gender == 1)
+                                            男性
+                                            @elseif($contact->gender == 2)
+                                            女性
+                                            @else
+                                            その他
+                                            @endif
+                                            </p>
                                         </td>
                                     </tr>
                                     <!-- メールアドレス -->
@@ -146,7 +167,7 @@
                                     <tr class="confirm-table__row">
                                         <th class="confirm-table__header">電話番号</th>
                                         <td class="confirm-table__text">
-                                            <p class="contact-form__item-p">{{ $contact['tel'] }}</p>
+                                            <p class="contact-form__item-p">{{ $contact['tell'] }}</p>
                                         </td>
                                     </tr>
                                     <!-- 住所 -->
@@ -179,14 +200,11 @@
                                     </tr>
                                 </table>
                                 </div>
-                                <form class="delete-form" action="/delete" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <div class="form__button">
-                                        <input type="hidden" name="id" value="{{ $contact['id'] }}">
-                                        <button class="form__button-submit" type="submit">削除</button>
-                                    </div>
-                                </form>
+                                <div class="form__button">
+                                    <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                                    <button class="form__button-submit" type="submit">削除</button>
+                                </div>
+                </form>
                             </div>
                             </div>
                         </div>

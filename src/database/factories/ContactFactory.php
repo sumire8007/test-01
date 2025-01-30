@@ -15,21 +15,20 @@ class ContactFactory extends Factory
     protected $model = Contact::class;
     public function definition()
     {
-        $gender = $this->faker->randomElement(['男性', '女性', 'その他']);
         $phone = $this->faker->phoneNumber();
-        $tel = implode(explode("-", $phone), "");
+        $tell = implode(explode("-", $phone), "");
         return [
             // 姓名が逆になっているので要確認
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'gender' => $gender,
+            'first_name' => $this->faker->lastName,
+            'last_name' => $this->faker->firstName,
+            'gender' => $gender = $this->faker->randomElement([1,2,3]),
             'email' => $this->faker->unique()->safeEmail,
             // 電話番号にハイフンが入るのでハイフン無しでDBに保存
-            'tel' => $tel,
-            'address' => $this->faker->address,
+            'tell' => $tell,
+            'address' => $this->faker->city().$this->faker->streetAddress,
             'building' => $this->faker->secondaryAddress,
             'category_id' => $this->faker->numberBetween(1, 5),
-            'detail' => $this->faker->text,
+            'detail' => $this->faker->text(120),
         ];
     }
 }
